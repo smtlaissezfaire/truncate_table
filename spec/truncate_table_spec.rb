@@ -2,11 +2,40 @@ require File.dirname(__FILE__) + "/spec_helper"
 
 describe TruncateTable do
   describe "with a database that supports truncation" do
-    it "should execute the 'TRUNCATE TABLE 'table_name'"
+    before(:each) do
+      @connection = connection
+    end
 
-    it "should remove all rows"
+    def connection
+      active_record.connection
+    end
 
-    it "should use the proper table name"
+    def active_record
+      ActiveRecord::Base
+    end
+
+    it "should execute the 'TRUNCATE TABLE 'table_name'" do
+      @connection.stub!(:execute).and_return true
+      @connection.should_receive(:execute).with("TRUNCATE TABLE `users`")
+      User.truncate_table!
+    end
+
+    it "should use the proper table name" do
+      klass = User.dup
+      klass.set_table_name "foo"
+
+      @connection.stub!(:execute).and_return true
+      @connection.should_receive(:execute).with("TRUNCATE TABLE `foo`")
+      klass.truncate_table!
+    end
+
+    it "should remove all rows" do
+      User.create!
+      User.create!
+
+      User.truncate_table!
+      User.count.should == 0
+    end
   end
 
   describe "with a database that doesn't support TRUNCATE" do

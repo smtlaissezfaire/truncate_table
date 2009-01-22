@@ -15,3 +15,6 @@ ActiveRecord::Schema.define do
     t.timestamps
   end
 end
+
+class User < ActiveRecord::Base
+end

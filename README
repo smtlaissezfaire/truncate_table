@@ -1,13 +1,17 @@
 TruncateTable
 =============
 
-Introduction goes here.
+Truncate your table with ActiveRecord::Base.truncate_table!
+
+Works with mysql and sqlite (and others which support either TRUNCATE TABLE or DELETE FROM)
+
+This plugin is especially useful for the 'down' method in a migration which populates a table after creation.
 
 
 Example
 =======
 
-Example goes here.
+User.truncate_table! removes all users
 
 
 Copyright (c) 2009 [name of plugin creator], released under the MIT license

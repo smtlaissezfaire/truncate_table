@@ -13,5 +13,5 @@ Example
 
 User.truncate_table! removes all users
 
-
-Copyright (c) 2009 [name of plugin creator], released under the MIT license
+Copyright (c) 2009 Scott Taylor <scott@railsnewbie.com>.
+Dual licensed under the released under the MIT & GPL 3 licenses.

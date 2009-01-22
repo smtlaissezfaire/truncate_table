@@ -1,1 +1,2 @@
-# TruncateTable
+module TruncateTable
+end

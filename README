@@ -14,6 +14,19 @@ Example
 User.truncate_table! removes all users
 
 
+Running Unit Tests
+==================
+
+You'll need mysql and sqlite3 installed, as per usual.
+
+Run the following to generate a template for mysql:
+
+  cp spec/mysql_connection.yml.template spec/mysql_connection.yml
+
+Customize spec/mysql_connection.yml.  You'll need to create the mysql database
+given in that file.
+
+
 Author
 ======
 

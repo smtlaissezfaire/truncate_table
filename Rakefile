@@ -1,15 +1,15 @@
 require 'rake'
-require 'rake/testtask'
+require 'spec/rake/spectask'
+require 'spec/rake/verify_rcov'
 require 'rake/rdoctask'
 
-desc 'Default: run unit tests.'
-task :default => :test
+desc 'Default: run specs.'
+task :default => :spec
 
-desc 'Test the truncate_table plugin.'
-Rake::TestTask.new(:test) do |t|
-  t.libs << 'lib'
-  t.pattern = 'test/**/*_test.rb'
-  t.verbose = true
+desc 'Run the specs'
+Spec::Rake::SpecTask.new do |t|
+  t.warning = false
+  t.spec_opts = ["--color"]
 end
 
 desc 'Generate documentation for the truncate_table plugin.'
